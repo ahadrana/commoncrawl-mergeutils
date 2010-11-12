@@ -1,4 +1,4 @@
-The beginnings of a library to perform sorting or large datasets outside the scope of a map-reduce jobs.
+The beginnings of a library to perform sorting of large datasets outside the scope of a map-reduce jobs.
 
 Please set hadoop.version and hadoop.path in build.properties to point to your version of 
 hadoop. 
@@ -7,14 +7,14 @@ Once commoncrawl-mergeutils.jar has been built, you can execute a org.commoncraw
 
 The luancher runs the command in the background. You can monitor progress via either ./logs/<<ClassName>>.log for LOG output, or ./logs/<<ClassName>>_run.log for stdout output.
 
-The main class of interest are, obviously, MergeSortSpillWriter and also SequenceFileMerger. MergeSortSpillWriter can be fed unsorted records via the spillRecord call. It will 
-internally buffer records until a configurable threshold is reached, and then will sort the intermediate records and spill them to a temp sequence file. This will continue
-until the close method is called. Close will trigger the class to spill the final set of records and then feed the part files to SequenceFileMerger, which will perform a merge
-sort of the records and spill them to a configurable output SpillWriter. To optimize the sort, one should specify a RawKeyValueComparator or to squeeze even more performance, 
-use the OptimizedKeyGeneratorAndComparator class to generate a long key value from key,value pairs or a long key + buffer secondary key from a key,value pair. 
+The main classes of interest are MergeSortSpillWriter and SequenceFileMerger. MergeSortSpillWriter can be fed unsorted records via the SpillRecord API. It will 
+internally buffer records until a configurable threshold is reached, and then sort the intermediate records and spill them to a temp sequence file. This will continue
+until the close method is called. Close will trigger the class to spill the final set of records and then feed the Part files to SequenceFileMerger. SequenceFileMergerwill 
+perform a merge-sort of the records and spill them to a configurable output SpillWriter. To optimize the sort, one should specify a RawKeyValueComparator or to squeeze even more
+performance use the OptimizedKeyGeneratorAndComparator class to generate a long key value from key,value pairs or a long key + buffer secondary key from a key,value pair. 
 
-This MergeSortSpillWriter and SequenceFileMerger classes have been used in production to sort very large recordsets (100 of millions of records). But, the library is a work in 
-progress. The combiner code in SequenceFileMerge should be avoided for now. 
+The MergeSortSpillWriter and SequenceFileMerger classes have been used in production to sort very large recordsets (100s of millions of records), but one should be 
+aware that the library is a work in progress. The combiner code in SequenceFileMerge should be avoided for now. 
 
 Upcoming features include: 
 
@@ -24,4 +24,4 @@ Upcoming features include:
 4. Flushing out of the Combiner/Reducer implementation in the SequenceFileMerger class.
 5. Making the quick-sort mutli-threaded, and parallelizing the merge-sort.
 
-
+Feedback is welcome :-)
