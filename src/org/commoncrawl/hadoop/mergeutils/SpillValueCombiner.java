@@ -1,7 +1,7 @@
 package org.commoncrawl.hadoop.mergeutils;
 
 /*
- *		 Copyright 2010 - CommonCrawl Foundation
+ *    Copyright 2010 - CommonCrawl Foundation
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -30,5 +30,5 @@ import org.apache.hadoop.io.WritableComparable;
  * @param <ValueType>
  */
 public interface SpillValueCombiner<KeyType extends WritableComparable, ValueType extends Writable> {
-	public ValueType combineValues(KeyType key, Vector<ValueType> values);
+  public ValueType combineValues(KeyType key, Vector<ValueType> values);
 }

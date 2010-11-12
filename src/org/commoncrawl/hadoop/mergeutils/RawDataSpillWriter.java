@@ -1,7 +1,7 @@
 package org.commoncrawl.hadoop.mergeutils;
 
 /*
- *		 Copyright 2010 - CommonCrawl Foundation
+ *    Copyright 2010 - CommonCrawl Foundation
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -30,20 +30,20 @@ import org.apache.hadoop.io.WritableComparable;
  * @param <ValueType>
  */
 public interface RawDataSpillWriter<KeyType extends WritableComparable, ValueType extends Writable>
-    extends SpillWriter<KeyType, ValueType> {
+extends SpillWriter<KeyType, ValueType> {
 
-	/**
-	 * spill a key/value pair in raw format
-	 * 
-	 * @param keyData
-	 * @param keyOffset
-	 * @param keyLength
-	 * @param valueData
-	 * @param valueOffset
-	 * @param valueLength
-	 * @throws IOException
-	 */
-	void spillRawRecord(byte[] keyData, int keyOffset, int keyLength,
-	    byte[] valueData, int valueOffset, int valueLength) throws IOException;
+  /**
+   * spill a key/value pair in raw format
+   * 
+   * @param keyData
+   * @param keyOffset
+   * @param keyLength
+   * @param valueData
+   * @param valueOffset
+   * @param valueLength
+   * @throws IOException
+   */
+  void spillRawRecord(byte[] keyData, int keyOffset, int keyLength,
+      byte[] valueData, int valueOffset, int valueLength) throws IOException;
 
 }

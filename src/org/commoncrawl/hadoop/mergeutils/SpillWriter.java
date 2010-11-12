@@ -1,7 +1,7 @@
 package org.commoncrawl.hadoop.mergeutils;
 
 /*
- *		 Copyright 2010 - CommonCrawl Foundation
+ *    Copyright 2010 - CommonCrawl Foundation
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -34,8 +34,8 @@ import org.apache.hadoop.io.WritableComparable;
  */
 public interface SpillWriter<KeyType extends WritableComparable, ValueType extends Writable> {
 
-	void spillRecord(KeyType key, ValueType value) throws IOException;
+  void spillRecord(KeyType key, ValueType value) throws IOException;
 
-	void close() throws IOException;
+  void close() throws IOException;
 
 }

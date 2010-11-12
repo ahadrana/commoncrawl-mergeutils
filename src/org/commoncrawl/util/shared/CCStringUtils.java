@@ -1,7 +1,7 @@
 package org.commoncrawl.util.shared;
 
 /*
- *		 Copyright 2010 - CommonCrawl Foundation
+ *    Copyright 2010 - CommonCrawl Foundation
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -29,32 +29,32 @@ import java.util.TimeZone;
  */
 public class CCStringUtils extends org.apache.hadoop.util.StringUtils {
 
-	public static InetSocketAddress parseSocketAddress(String socketAddress) {
+  public static InetSocketAddress parseSocketAddress(String socketAddress) {
 
-		if (socketAddress != null) {
-			int colonIdx = socketAddress.indexOf(':');
-			if (colonIdx != -1) {
-				String hostName = socketAddress.substring(0, colonIdx);
-				String port = socketAddress.substring(colonIdx + 1);
-				return new InetSocketAddress(hostName, Integer.parseInt(port));
-			}
-		}
+    if (socketAddress != null) {
+      int colonIdx = socketAddress.indexOf(':');
+      if (colonIdx != -1) {
+        String hostName = socketAddress.substring(0, colonIdx);
+        String port = socketAddress.substring(colonIdx + 1);
+        return new InetSocketAddress(hostName, Integer.parseInt(port));
+      }
+    }
 
-		return null;
-	}
+    return null;
+  }
 
-	private static SimpleDateFormat _formatter = new SimpleDateFormat(
-	    "yyyy.MM.dd 'at' hh:mm:ss z");
-	static {
-		_formatter.setTimeZone(TimeZone.getTimeZone("PST"));
-	}
+  private static SimpleDateFormat _formatter = new SimpleDateFormat(
+  "yyyy.MM.dd 'at' hh:mm:ss z");
+  static {
+    _formatter.setTimeZone(TimeZone.getTimeZone("PST"));
+  }
 
-	public static final String dateStringFromTimeValue(long timeValue) {
+  public static final String dateStringFromTimeValue(long timeValue) {
 
-		if (timeValue != -1) {
-			Date theDate = new Date(timeValue);
-			return _formatter.format(theDate);
-		}
-		return "";
-	}
+    if (timeValue != -1) {
+      Date theDate = new Date(timeValue);
+      return _formatter.format(theDate);
+    }
+    return "";
+  }
 }

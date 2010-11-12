@@ -1,7 +1,7 @@
 package org.commoncrawl.hadoop.mergeutils;
 
 /*
- *		 Copyright 2010 - CommonCrawl Foundation
+ *    Copyright 2010 - CommonCrawl Foundation
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -30,6 +30,6 @@ import org.apache.hadoop.io.WritableComparable;
  */
 public interface KeyValuePairComparator<KeyType extends WritableComparable, ValueType extends Writable> {
 
-	int compare(KeyType key1, ValueType value1, KeyType key2, ValueType value2);
+    int compare(KeyType key1, ValueType value1, KeyType key2, ValueType value2);
 
 }
